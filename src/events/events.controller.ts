@@ -33,8 +33,10 @@ export class EventsController {
 
   @Get('')
   async get(@Query() query: EventsQuery): Promise<EventsList> {
-    const data = await this.eventsService.get();
-    const { limit = 20, offset = 0 } = query;
+    const limit = Number(query.limit) || 20;
+    const offset = Number(query.offset) || 0;
+
+    const data = await this.eventsService.get({ limit, offset });
 
     return {
       data,

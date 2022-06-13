@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { EventEntity } from './event.entity';
-import { EventDto } from './events.interfaces';
+import { EventDto, EventsQuery } from './events.interfaces';
 
 @Injectable()
 export class EventsService {
@@ -22,8 +22,11 @@ export class EventsService {
     await this.eventsRepository.delete(id);
   }
 
-  async get(): Promise<EventEntity[]> {
-    return await this.eventsRepository.find({ take: 20, skip: 0 });
+  async get(query: EventsQuery): Promise<EventEntity[]> {
+    return await this.eventsRepository.find({
+      take: query.limit,
+      skip: query.offset,
+    });
   }
 
   async getOne(id: number): Promise<EventEntity> {
