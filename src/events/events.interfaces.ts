@@ -1,6 +1,6 @@
 import { EventEntity, EventStatus } from './event.entity';
 import { ApiProperty, OmitType, PartialType } from '@nestjs/swagger';
-import { List } from 'src/app.interfaces';
+import { List } from '../app.interfaces';
 import {
   IsDateString,
   IsEnum,

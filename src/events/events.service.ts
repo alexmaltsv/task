@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { EventEntity } from './event.entity';
-import { EventDto } from 'src/events/events.interfaces';
+import { EventDto } from './events.interfaces';
 
 @Injectable()
 export class EventsService {

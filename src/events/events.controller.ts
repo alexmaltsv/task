@@ -9,8 +9,8 @@ import {
   Query,
 } from '@nestjs/common';
 import { EventsService } from './events.service';
-import { EventDto, EventsList } from 'src/events/events.interfaces';
-import { EventEntity } from 'src/events/event.entity';
+import { EventDto, EventsList } from './events.interfaces';
+import { EventEntity } from './event.entity';
 
 @Controller('events')
 export class EventsController {
