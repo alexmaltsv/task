@@ -39,3 +39,11 @@ export class EventsList extends List<EventEntity> {
   @ApiProperty({ type: [EventEntity] })
   data: EventEntity[];
 }
+
+export class EventsQuery {
+  @ApiProperty({ minimum: 0 })
+  limit: number;
+
+  @ApiProperty({ minimum: 0 })
+  offset: number;
+}

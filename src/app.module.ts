@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
 import { EventsModule } from './events';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [EventsModule],
+  imports: [EventsModule, ConfigModule.forRoot()],
   controllers: [],
   providers: [],
 })

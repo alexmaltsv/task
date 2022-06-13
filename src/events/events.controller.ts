@@ -9,7 +9,7 @@ import {
   Query,
 } from '@nestjs/common';
 import { EventsService } from './events.service';
-import { EventDto, EventsList } from './events.interfaces';
+import { EventDto, EventsList, EventsQuery } from './events.interfaces';
 import { EventEntity } from './event.entity';
 
 @Controller('events')
@@ -32,13 +32,14 @@ export class EventsController {
   }
 
   @Get('')
-  async get(): Promise<EventsList> {
+  async get(@Query() query: EventsQuery): Promise<EventsList> {
     const data = await this.eventsService.get();
+    const { limit = 20, offset = 0 } = query;
 
     return {
       data,
-      limit: 20,
-      offset: 0,
+      limit,
+      offset,
     };
   }
 
