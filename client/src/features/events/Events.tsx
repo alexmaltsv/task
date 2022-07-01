@@ -13,11 +13,14 @@ export const Events = () => {
     data: events,
     modalError,
     create,
+    state,
     edit,
   } = useEvents();
   const [isOpenCreate, showCreate] = useState(false);
   const [deleteId, showDelete] = useState<number | null>(null);
   const [editId, showEdit] = useState<number | null>(null);
+
+  const isLoading = state === 'idle' || state === 'pending';
 
   const editEvent = useMemo(() => events?.find(({ id }) => id === editId), [events, editId]);
 
@@ -76,11 +79,13 @@ export const Events = () => {
         />
       </EventListContainer>
 
-      {events && (
-        <CalendarContainer>
+      <CalendarContainer>
+        {!isLoading ? (
           <Calendar events={events} />
-        </CalendarContainer>
-      )}
+        ) : (
+          <div>Loading...</div>
+        )}
+      </CalendarContainer>
     </EventsContainer>
   );
 };

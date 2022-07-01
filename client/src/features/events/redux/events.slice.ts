@@ -12,7 +12,7 @@ export interface EventsState {
 }
 
 const initialState: EventsState = {
-  state: 'inited',
+  state: 'idle',
 };
 
 const eventsSlice = createSlice({
